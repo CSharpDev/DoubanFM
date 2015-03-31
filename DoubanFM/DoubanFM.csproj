@@ -384,6 +384,9 @@
     <Resource Include="Images\Shadow\INACTIVESHADOWTOPLEFT.png" />
     <Resource Include="Images\Shadow\INACTIVESHADOWTOPRIGHT.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\DoubanFM_Download.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy /y "$(SolutionDir)version.dat" "$(TargetDir)"</PostBuildEvent>
