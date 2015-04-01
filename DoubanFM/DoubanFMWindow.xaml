@@ -675,7 +675,7 @@ Website : http://www.kfstorm.com
                             <Button x:Name="BtnCopyUrl" Grid.Column="1" Style="{StaticResource ShareStyle}" ToolTip="{x:Static resx:Resources.CopyUrlButton}" Click="BtnCopyUrl_Click" Visibility="{Binding ShareSetting.EnableOneKeyShare, ConverterParameter={x:Static Visibility.Collapsed}, Converter={StaticResource BoolReverseToVisibilityConverter}, ElementName=Window}"/>
                             <Button x:Name="BtnOneKeyShare" Grid.Column="1" Style="{StaticResource ShareStyle}" ToolTip="{x:Static resx:Resources.ShareKeyButton}" Click="BtnOneKeyShare_Click" Visibility="{Binding ShareSetting.EnableOneKeyShare, ConverterParameter={x:Static Visibility.Collapsed}, Converter={StaticResource BoolToVisibilityConverter}, ElementName=Window}"/>
                         </Grid>
-                        <Button x:Name="BtnDownload"   Grid.Column="1" Click="ClickDownload" Style="{StaticResource DownloadStyle}"></Button>
+                        <Button x:Name="BtnDownload"   Grid.Column="1" Click="ClickDownload" Style="{StaticResource DownloadStyle}"/>
                         <Button x:Name="BtnDownloadSearch" Grid.Column="2" Style="{StaticResource SearchStyle}" ToolTip="{x:Static resx:Resources.DownloadSearchButton}" Click="BtnDownloadSearch_Click"/>
                         <CheckBox x:Name="CheckBoxShowLyrics" Grid.Column="3" IsChecked="{Binding Settings.ShowLyrics, Source={StaticResource Player}}" Checked="CheckBoxShowLyrics_Checked" Unchecked="CheckBoxShowLyrics_Unchecked" Style="{StaticResource ShowLyricsStyle}"/>
                         <Border x:Name="BdVolumeControl" Grid.Column="4" Background="Transparent" Margin="0,0,-65,0">

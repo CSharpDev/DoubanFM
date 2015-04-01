@@ -2391,7 +2391,80 @@ namespace DoubanFM
 
         private void ClickDownload(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("download music");
+            //BassEngine.Instance.OpenUrlAsync()
+
+
+
+            if (_player.CurrentSong == null)
+            {
+                MessageBox.Show("无文件");
+                return;
+            }
+
+            var song = _player.CurrentSong;
+
+            var info = song.Title + ":" + song.FileUrl + ":" + song.Picture;
+
+            //MessageBox.Show(info);
+
+
+
+            DownloadFile(song.FileUrl, "D:/music/" + song.Title + Path.GetExtension(song.FileUrl), null);
+
+
+            MessageBox.Show("下载完成");
         }
+
+
+        /// <summary>
+        /// 下载文件
+        /// </summary>
+        /// <param name="url">下载文件地址</param>
+        /// <param name="filename">下载后的存放地址</param>
+        /// <param name="prog">用于显示的进度条</param>
+        public void DownloadFile(string url, string filename, System.Windows.Forms.ProgressBar prog)
+        {
+            try
+            {
+                System.Net.HttpWebRequest myrq = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(url);
+                System.Net.HttpWebResponse myrp = (System.Net.HttpWebResponse)myrq.GetResponse();
+                long totalBytes = myrp.ContentLength;
+
+                var path = Path.GetDirectoryName(filename);
+                if (!Directory.Exists(path))
+                    Directory.CreateDirectory(path);
+
+                if (prog != null)
+                {
+                    prog.Maximum = (int)totalBytes;
+                }
+
+                var st = myrp.GetResponseStream();
+                var so = new FileStream(filename, System.IO.FileMode.Create);
+                long totalDownloadedByte = 0;
+                byte[] by = new byte[1024];
+                int osize = st.Read(by, 0, (int)by.Length);
+                while (osize > 0)
+                {
+                    totalDownloadedByte = osize + totalDownloadedByte;
+                    System.Windows.Forms.Application.DoEvents();
+                    so.Write(by, 0, osize);
+
+                    if (prog != null)
+                    {
+                        prog.Value = (int)totalDownloadedByte;
+                    }
+                    osize = st.Read(by, 0, (int)by.Length);
+                }
+                so.Close();
+                st.Close();
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+        }
+
+
     }
 }
