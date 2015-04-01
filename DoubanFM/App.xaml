@@ -15,6 +15,7 @@ Website : http://www.kfstorm.com
 				<ResourceDictionary Source="Style.xaml"/>
 			</ResourceDictionary.MergedDictionaries>
 			<DoubanFM_Core:Player x:Key="Player"/>
+		   
 		</ResourceDictionary>
 		 
 	</Application.Resources>

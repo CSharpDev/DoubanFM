@@ -137,6 +137,9 @@
     <Compile Include="ShadowWindow.xaml.cs">
       <DependentUpon>ShadowWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Wmi\DisplayConfiguration.cs" />
     <Compile Include="ExceptionWindow.xaml.cs">
       <DependentUpon>ExceptionWindow.xaml</DependentUpon>
@@ -272,6 +275,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Window1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -386,6 +393,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\DoubanFM_Download.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="XMLFile1.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
