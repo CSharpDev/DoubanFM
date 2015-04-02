@@ -2394,7 +2394,7 @@ namespace DoubanFM
             //BassEngine.Instance.OpenUrlAsync()
 
 
-
+            DownloadProgress.Visibility = System.Windows.Visibility.Visible;
             if (_player.CurrentSong == null)
             {
                 MessageBox.Show("无文件");
@@ -2407,12 +2407,20 @@ namespace DoubanFM
 
             //MessageBox.Show(info);
 
+            var downloadPath = @"d:/music/" + "[" + song.Artist + "][" + song.Album + "]/";
+
+            DownloadFile(song.FileUrl, downloadPath + song.Title + Path.GetExtension(song.FileUrl), DownloadProgress);
+
+            //下歌词
+            var lyrics = LyricsHelper.GetLyrics(song);
+
+            if (lyrics != null && !string.IsNullOrWhiteSpace(lyrics.LrcCode))
+                File.WriteAllText(downloadPath + song.Title + ".lrc", lyrics.LrcCode);
 
 
-            DownloadFile(song.FileUrl, "D:/music/" + song.Title + Path.GetExtension(song.FileUrl), null);
+            //MessageBox.Show("下载完成");
 
-
-            MessageBox.Show("下载完成");
+            DownloadProgress.Visibility = System.Windows.Visibility.Hidden;
         }
 
 
@@ -2422,7 +2430,7 @@ namespace DoubanFM
         /// <param name="url">下载文件地址</param>
         /// <param name="filename">下载后的存放地址</param>
         /// <param name="prog">用于显示的进度条</param>
-        public void DownloadFile(string url, string filename, System.Windows.Forms.ProgressBar prog)
+        public void DownloadFile(string url, string filename, ProgressBar prog)
         {
             try
             {
@@ -2466,5 +2474,14 @@ namespace DoubanFM
         }
 
 
+        private void DownloadSettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonDownloadSetting.IsEnabled = false;
+
+
+            DownLoadManager window = new DownLoadManager();
+            window.Closed += delegate { ButtonDownloadSetting.IsEnabled = true; _windowMouseLeaveTimer.Start(); };
+            window.Show();
+        }
     }
 }

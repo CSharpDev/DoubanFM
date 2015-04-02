@@ -14,11 +14,11 @@ using System.Windows.Shapes;
 namespace DoubanFM
 {
     /// <summary>
-    /// Window1.xaml 的交互逻辑
+    /// DownLoadManager.xaml 的交互逻辑
     /// </summary>
-    public partial class Window1 : Window
+    public partial class DownLoadManager : DoubanFM.ChildWindowBase
     {
-        public Window1()
+        public DownLoadManager()
         {
             InitializeComponent();
         }

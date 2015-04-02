@@ -825,4 +825,7 @@
   <data name="Download" xml:space="preserve">
     <value>下载文件</value>
   </data>
+  <data name="DownloadSettingsButton" xml:space="preserve">
+    <value>下载设置</value>
+  </data>
 </root>

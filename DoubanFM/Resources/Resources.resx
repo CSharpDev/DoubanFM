@@ -825,4 +825,7 @@ Application will restart after reset.</value>
   <data name="Download" xml:space="preserve">
     <value>Download Music</value>
   </data>
+  <data name="DownloadSettingsButton" xml:space="preserve">
+    <value>DownloadSettingsButton</value>
+  </data>
 </root>

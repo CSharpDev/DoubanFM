@@ -430,6 +430,15 @@ namespace DoubanFM.Resources {
         }
         
         /// <summary>
+        ///   查找类似 DownloadSettingsButton 的本地化字符串。
+        /// </summary>
+        public static string DownloadSettingsButton {
+            get {
+                return ResourceManager.GetString("DownloadSettingsButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Username 的本地化字符串。
         /// </summary>
         public static string EmailUserNameBlock {

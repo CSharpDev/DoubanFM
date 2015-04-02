@@ -490,12 +490,15 @@ Website : http://www.kfstorm.com
                                     <RowDefinition/>
                                     <RowDefinition Height="10"/>
                                     <RowDefinition/>
+                                    <RowDefinition Height="10"/>
+                                    <RowDefinition/>
                                 </Grid.RowDefinitions>
                                 <Button x:Name="ButtonGeneralSetting" Content="{x:Static resx:Resources.GeneralSettingsButton}" Click="ButtonGeneralSetting_Click"/>
                                 <Button Grid.Row="2" x:Name="ButtonUISetting" Content="{x:Static resx:Resources.InterfaceSettingsButton}" Click="ButtonUISetting_Click"/>
                                 <Button Grid.Row="4" x:Name="ButtonLyricsSetting" Content="{x:Static resx:Resources.LyricsSettingsButton}" Click="LyricsSetting_Click" />
                                 <Button Grid.Row="6" x:Name="ButtonHotKeySettings" Click="ButtonHotKeySettings_Click" Content="{x:Static resx:Resources.HotKeySettingsButton}"/>
                                 <Button Grid.Row="8" x:Name="ButtonShareSetting" Content="{x:Static resx:Resources.ShareSettingsButton}" Click="ButtonShareSetting_Click"/>
+                                <Button Grid.Row="10" x:Name="ButtonDownloadSetting" Content="{x:Static resx:Resources.DownloadSettingsButton}" Click="DownloadSettingsButton_Click"/>
 
                             </Grid>
                             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
@@ -675,7 +678,7 @@ Website : http://www.kfstorm.com
                             <Button x:Name="BtnCopyUrl" Grid.Column="1" Style="{StaticResource ShareStyle}" ToolTip="{x:Static resx:Resources.CopyUrlButton}" Click="BtnCopyUrl_Click" Visibility="{Binding ShareSetting.EnableOneKeyShare, ConverterParameter={x:Static Visibility.Collapsed}, Converter={StaticResource BoolReverseToVisibilityConverter}, ElementName=Window}"/>
                             <Button x:Name="BtnOneKeyShare" Grid.Column="1" Style="{StaticResource ShareStyle}" ToolTip="{x:Static resx:Resources.ShareKeyButton}" Click="BtnOneKeyShare_Click" Visibility="{Binding ShareSetting.EnableOneKeyShare, ConverterParameter={x:Static Visibility.Collapsed}, Converter={StaticResource BoolToVisibilityConverter}, ElementName=Window}"/>
                         </Grid>
-                        <Button x:Name="BtnDownload"   Grid.Column="1" Click="ClickDownload" Style="{StaticResource DownloadStyle}"/>
+                        <Button x:Name="BtnDownload"   Grid.Column="1" Click="ClickDownload" Style="{StaticResource DownloadStyle}" Height="24" VerticalAlignment="Top"/>
                         <Button x:Name="BtnDownloadSearch" Grid.Column="2" Style="{StaticResource SearchStyle}" ToolTip="{x:Static resx:Resources.DownloadSearchButton}" Click="BtnDownloadSearch_Click"/>
                         <CheckBox x:Name="CheckBoxShowLyrics" Grid.Column="3" IsChecked="{Binding Settings.ShowLyrics, Source={StaticResource Player}}" Checked="CheckBoxShowLyrics_Checked" Unchecked="CheckBoxShowLyrics_Unchecked" Style="{StaticResource ShowLyricsStyle}"/>
                         <Border x:Name="BdVolumeControl" Grid.Column="4" Background="Transparent" Margin="0,0,-65,0">
@@ -693,7 +696,7 @@ Website : http://www.kfstorm.com
                         <TextBlock x:Name="CurrentTime" FontSize="18" Foreground="White" Text="00:00"/>
                         <TextBlock Grid.Column="1" x:Name="TotalTime" FontSize="18" HorizontalAlignment="Right" Foreground="White" Text="00:00"/>
                     </Grid>
-                    <Slider x:Name="Slider" Grid.Row="4" Margin="0,5" Style="{StaticResource SliderStyleForProgress}" Foreground="{Binding Background, Converter={StaticResource WindowBackgroundToSliderForegroundConverter}, ElementName=Window}" Minimum="0" Maximum="1"/>
+                    <Slider x:Name="Slider"  Grid.Row="4" Margin="0,5" Style="{StaticResource SliderStyleForProgress}" Foreground="{Binding Background, Converter={StaticResource WindowBackgroundToSliderForegroundConverter}, ElementName=Window}" Minimum="0" Maximum="1"/>
                     <Grid Grid.Row="5" HorizontalAlignment="Center" Height="50" VerticalAlignment="Bottom">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="38" />
@@ -711,6 +714,7 @@ Website : http://www.kfstorm.com
                         <Button Grid.Column="6" x:Name="ButtonNext" Click="ButtonNext_Click" Style="{StaticResource NextStyle}"/>
                     </Grid>
                 </Grid>
+                <ProgressBar x:Name="DownloadProgress" HorizontalAlignment="Left" Visibility="Hidden" Height="12" Margin="30,123,0,0" VerticalAlignment="Top" Width="247"/>
             </Grid>
         </Grid>
         <Grid x:Name="CoverGrid" MouseLeftButtonUp="CoverGrid_MouseLeftButtonUp" Width="{Binding ActualWidth, ElementName=LeftPanel}" Height="{Binding ActualHeight, ElementName=LeftPanel}" HorizontalAlignment="Left" d:LayoutOverrides="HorizontalAlignment, GridBox" MouseMove="CoverGrid_MouseMove" MouseLeave="CoverGrid_MouseLeave" d:IsHidden="True" RenderTransformOrigin="0.5,0.5">
